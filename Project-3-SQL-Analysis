@@ -1,0 +1,61 @@
+select *
+from internship_sales_dataset;
+
+
+--- Missing Values ---
+select count(*)
+from internship_sales_dataset
+where CouponCode = 'No Coupon';
+
+
+--- Total Revenue by Product ---
+select Product,
+       sum(TotalPrice) as TotalSales
+       from internship_sales_dataset
+group by Product
+order by TotalSales desc;       
+
+
+--- Count of Order by Status ---
+select OrderStatus,
+       count(*) as TotalOrders
+from internship_sales_dataset
+group by OrderStatus
+order by TotalOrders desc;       
+
+--- Top 10 Sales ---
+select Product, 
+       sum(TotalPrice) as TotalRevenue
+from internship_sales_dataset
+group by Product
+order by  TotalRevenue desc;
+
+
+--- Revenue by Payment Method ---
+select PaymentMethod,
+       sum(TotalPrice) as Revenue
+from internship_sales_dataset
+group by PaymentMethod
+order by Revenue desc;
+
+--- Total Sales by Product ---
+select Product,
+       sum(TotalPrice) as TotalSales
+       from internship_sales_dataset
+group by Product
+order by TotalSales desc;       
+
+--- Most Ordered Product ---
+select Product,
+       count(*) as NoOfOrders  
+from internship_sales_dataset
+group by Product
+order by NoOfOrders desc; 
+
+
+--- Summary Query ---
+select 
+      count(*) as TotalOrders,
+      sum(TotalPrice) as TotalRevenue,
+      avg(TotalPrice) as AverageOrderValue
+from internship_sales_dataset;
